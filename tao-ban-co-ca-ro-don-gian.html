@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bàn cờ ca rô đơn gian</title>
+</head>
+<h3>Caro Game Simple</h3>
+<p id="carogame" />
+<input type="button" value="Change Value" onclick="changeValue()">
+<body>
+<script>
+    let b = document.getElementById("carogame");//khai báo biến b lấy id từ thẻ <p></p>
+    let board = [];//khai báo biến board để chứa giá trị của mảng
+    let data = "";//khai báo biến data là một biến rỗng
+    for (let i = 0; i < 5; i++) {    //vì bàn cờ caro có 5 hàng (i đại biểu cho hàng) nên i sẽ bé hơn 5
+        board[i] = new Array(0, 0, 0, 0, 0);
+    }
+
+    for (let i = 0; i < 5; i++) {
+        data += "<br/>";
+        for (let j = 0; j < 5; j++) {  //vì bàn cờ caro có 5 cột (j đại biểu cho cột) nên j sẽ bé hơn 5
+            data += board[i][j] + "&nbsp;&nbsp;"; //Thông thường HTML chỉ hiển thị một khoảng trắng giữa các từ, không cần biết bạn đã gõ dấu cách bao nhiêu lần. Để buộc các dấu cách đã bị bỏ kia phải hiển thị, hãy gõ &nbsp; vào nơi bạn muốn chèn.
+        }
+    }
+    data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+    b.innerHTML = data;
+    function changeValue() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "x";
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+        b.innerHTML = "<hr/>" + data;
+    }
+</script>
+
+</body>
+</html>
